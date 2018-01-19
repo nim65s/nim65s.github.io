@@ -5,6 +5,7 @@ url: "https://nim65s.github.io"
 twitter_username: nim65s
 github_username:  nim65s
 markdown: kramdown
+remote_theme: Gepetto/jekyll-theme
 
 exclude:
   - Gemfile
