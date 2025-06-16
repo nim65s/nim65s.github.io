@@ -25,17 +25,14 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1746006529,
-        "narHash": "sha256-705uQ2zEMLSl+ZfHamY1zVvlKfhqO4M0wxJffikDZQs=",
-        "ref": "refs/heads/main",
-        "rev": "f778a12a2547347e05069c6d62016d3c4b63483a",
-        "revCount": 46,
-        "type": "git",
-        "url": "file:///home/nim/local/pi2/laas-cnrs-typst-templates"
+        "lastModified": 1750145458,
+        "narHash": "sha256-kTv1iEVpVZ0WpKP5+sxQfJOp72vMUpkOyxPlFmoqhDI=",
+        "type": "tarball",
+        "url": "https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates/-/archive/main/laas-cnrs-typst-templates-main.tar.gz"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/nim/local/pi2/laas-cnrs-typst-templates"
+        "type": "tarball",
+        "url": "https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates/-/archive/main/laas-cnrs-typst-templates-main.tar.gz"
       }
     },
     "nixpkgs": {

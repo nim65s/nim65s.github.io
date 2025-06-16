@@ -1,9 +1,8 @@
 {
-  description = "My Homepages";
+  description = "My Homepage";
 
   inputs = {
-    # laas-cnrs-typst-templates.url = "https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates/-/archive/main/laas-cnrs-typst-templates-main.tar.gz";
-    laas-cnrs-typst-templates.url = "/home/nim/local/pi2/laas-cnrs-typst-templates";
+    laas-cnrs-typst-templates.url = "https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates/-/archive/main/laas-cnrs-typst-templates-main.tar.gz";
     flake-parts.follows = "laas-cnrs-typst-templates/flake-parts";
     nixpkgs.follows = "laas-cnrs-typst-templates/nixpkgs";
     treefmt-nix.follows = "laas-cnrs-typst-templates/treefmt-nix";
@@ -31,7 +30,7 @@
           };
           devShells.default = pkgs.mkShellNoCC {
             packages = [ self'.packages.typst ];
-            env.TYPST_FONT_PATHS = pkgs.noto-fonts;
+            env.TYPST_FONT_PATHS = pkgs.nerd-fonts.hack;
           };
           treefmt.programs = {
             nixfmt.enable = true;
