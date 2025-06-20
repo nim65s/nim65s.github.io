@@ -25,8 +25,8 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1750145458,
-        "narHash": "sha256-kTv1iEVpVZ0WpKP5+sxQfJOp72vMUpkOyxPlFmoqhDI=",
+        "lastModified": 1750415294,
+        "narHash": "sha256-pf5vfs9jCfWyaypwv5ChDtwji4cAAgTO2f09oGH8Av8=",
         "type": "tarball",
         "url": "https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates/-/archive/main/laas-cnrs-typst-templates-main.tar.gz"
       },
