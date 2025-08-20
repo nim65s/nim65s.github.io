@@ -40,6 +40,7 @@ watch-talk: $(TALK) my-slides.typ
 update:
 	nix flake update
 	uv lock -U
+	pre-commit autoupdate
 	yarn up
 	yarn-berry-fetcher missing-hashes yarn.lock > ./pkgs/missing-hashes.json
 	echo "{ \"hash\": \"`yarn-berry-fetcher prefetch yarn.lock pkgs/missing-hashes.json`\" }" > ./pkgs/lock-hash.json
@@ -48,4 +49,3 @@ nim65s-talks:
 	nix build .#nim65s-talks
 	install -Dm644 result/*.pdf -t public
 	install -Dm644 result/.metadata.json public/.old-talks.json
-
