@@ -54,7 +54,7 @@
             inherit system;
             overlays = [
               (
-                _final: prev:
+                _final: _prev:
                 {
                   inherit (inputs) uv2nix pyproject-nix pyproject-build-systems;
                   inherit (inputs'.laas-cnrs-typst-templates.packages) typst-laas;
@@ -104,7 +104,13 @@
           treefmt.programs = {
             biome = {
               enable = true;
-              excludes = [ "pkgs/missing-hashes.json" ];
+              excludes = [
+                ".pnp.cjs"
+                ".pnp.loader.mjs"
+                "public/.old-talks.json"
+                "public/style.css"
+                "pkgs/missing-hashes.json"
+              ];
             };
             deadnix.enable = true;
             nixfmt.enable = true;
