@@ -2,7 +2,7 @@
 
 ## Dependencies / Build
 
-typst with [laas typst templates](https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates] should be enough for `make pdfs`. 
+typst with [laas typst templates](https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates] should be enough for `make pdfs`.
 
 And for the website: uv + yarn, and look at the `Makefile`.
 
@@ -12,7 +12,7 @@ Or just use nix for everything.
 
 This git repository is available at:
 - https://gitlab.laas.fr/gsaurel/homepage with CI/CD to https://homepages.laas.fr/gsaurel/
-- https://github.com/nim65s/homepage with CI/CD to https://nim65s.github.io
+- https://github.com/nim65s/nim65s.github.io with CI/CD to https://nim65s.github.io
 
 ## Legacy
 

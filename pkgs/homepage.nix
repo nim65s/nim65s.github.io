@@ -1,48 +1,69 @@
 {
   lib,
-  nim65s-talks,
-  homepage-css,
-  talks-html,
-  talks-pdfs,
   stdenvNoCC,
+
+  homepage-venv,
+  nerd-fonts,
+  nim65s-talks,
+  typst-laas,
+  yarn-berry_4,
 }:
-stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation (finalAttrs: {
   name = "homepage";
 
   src = lib.fileset.toSource {
     root = ../.;
     fileset = lib.fileset.unions [
+      ../icons.js
       ../Makefile
+      ../media
+      ../my-slides.typ
+      ../package.json
+      ../public/index.html
+      ../src
+      ../style.css
+      ../talks
+      ../template.html
+      ../yarn.lock
     ];
+  };
+
+  missingHashes = ./missing-hashes.json;
+  offlineCache = yarn-berry_4.fetchYarnBerryDeps {
+    inherit (finalAttrs) src missingHashes;
+    inherit (lib.importJSON ./lock-hash.json) hash;
+  };
+
+  env = {
+    TYPST_FONT_PATHS = nerd-fonts.hack;
+    PYTHONPATH = "src";
   };
 
   makeFlags = [
     "PREFIX=$(out)"
+    "-j"
   ];
 
   buildInputs = [
-    homepage-css
     nim65s-talks
-    talks-html
-    talks-pdfs
   ];
 
-  buildPhase = ''
-    runHook preBuild
+  nativeBuildInputs = [
+    homepage-venv.passthru.virtualenv
+    typst-laas
+    yarn-berry_4
+    yarn-berry_4.yarnBerryConfigHook
+  ];
 
-    mkdir -p public
-    cp ${homepage-css}/* public
+  preBuild = ''
     cp ${nim65s-talks}/*.pdf public
-    cp ${talks-pdfs}/* public
-    cp ${talks-html}/* public
-
-    runHook postBuild
+    cp ${nim65s-talks}/.metadata.json public/.old-talks.json
   '';
 
   meta = {
-    description = "my talks;";
-    homepage = "https://github.com/nim65s/talks";
+    description = "my homepage";
+    homepage = "https://github.com/nim65s/homepage";
     license = lib.licenses.cc-by-sa-40;
     maintainers = [ lib.maintainers.nim65s ];
   };
-}
+})

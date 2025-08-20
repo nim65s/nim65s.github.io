@@ -71,9 +71,7 @@
             default = pkgs.mkShellNoCC {
               nativeBuildInputs = [ config.treefmt.build.wrapper ];
               inputsFrom = [
-                self'.packages.homepage-css
-                self'.packages.homepage-venv
-                self'.packages.talks-pdfs
+                self'.packages.homepage
               ];
               env = {
                 TYPST_FONT_PATHS = pkgs.nerd-fonts.hack;
@@ -97,11 +95,8 @@
           packages = {
             inherit (pkgs)
               homepage
-              homepage-css
               homepage-venv
               nim65s-talks
-              talks-html
-              talks-pdfs
               ;
             inherit (pkgs.homepage-venv.passthru) editableVirtualenv virtualenv;
             default = pkgs.homepage;
