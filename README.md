@@ -16,6 +16,6 @@ This git repository is available at:
 
 ## Legacy
 
-Older talks are displayed here, but their sours is available at
+Older talks are displayed here, but their source is available at
 - https://gitlab.laas.fr/gsaurel/talks
 - https://github.com/nim65s/talks
