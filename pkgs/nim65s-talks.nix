@@ -5,11 +5,11 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   name = "nim65s-talks";
-  version = "2.0.2";
+  version = "3.0.0";
 
   src = fetchzip {
     url = "https://github.com/nim65s/talks/releases/download/v${finalAttrs.version}/nim65s-talks.tar.xz";
-    hash = "sha256-IqOxizWHURfVmzvJzPKkm0QSgvKZWR+rvXG8ED7NtLU=";
+    hash = "sha256-s95GbLZ4+GEAmZr4rpylPfzNg3NepP2YPrJLjBe0sks=";
   };
 
   dontConfigure = true;

@@ -23,7 +23,7 @@
 }
 
 #let about-this-presentation(file) = {
-  let url = "https://homepages.laas.fr/gsaurel/talks/" + file + ".pdf"
+  let url = "https://homepages.laas.fr/gsaurel/" + file + ".pdf"
   laas-slide(title: "About this presentation", alignment: horizon + center)[
 
     *Available at*
