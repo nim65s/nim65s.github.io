@@ -1,4 +1,4 @@
-PREFIX=out
+PREFIX=/usr/local/homepages/gsaurel
 
 TALKS_SOURCES = $(wildcard talks/*.typ)
 TALKS_OUTPUTS = $(TALKS_SOURCES:talks/%.typ=public/%.pdf)
@@ -48,3 +48,4 @@ nim65s-talks:
 	nix build .#nim65s-talks
 	install -Dm644 result/*.pdf -t public
 	install -Dm644 result/.metadata.json public/.old-talks.json
+
