@@ -2,7 +2,7 @@
 
 ## Dependencies / Build
 
-typst with [laas typst templates](https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates] should be enough for `make pdfs`.
+typst with [laas typst templates](https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates) should be enough for `make pdfs`.
 
 And for the website: uv + yarn, and look at the `Makefile`.
 
