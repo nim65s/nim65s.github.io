@@ -1,4 +1,5 @@
 #import "../my-slides.typ": *
+#metadata("2RM: École Technologique 2025|https://wiki.2rm.cnrs.fr/EcoleTechno2025") <urls>
 
 #set text(lang: "en")
 

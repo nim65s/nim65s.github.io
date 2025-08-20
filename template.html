@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My talks</title>
+    <link href="./style.css" rel="stylesheet">
+  </head>
+  <body class="min-h-screen bg-ctp-base text-ctp-text">
+    <div class="max-w-screen-sm mx-auto">
+      <header>
+        <h1 class="text-3xl m-12 grid grid-cols-3 place-items-center">
+          <span>
+            <a class="w-8 h-8 text-ctp-text hover:text-ctp-peach" href="https://creativecommons.org/licenses/by-sa/4.0/">
+              {{ creativecommons }}
+            </a>
+          </span>
+          <span class="text-ctp-teal">
+            <a href="#">
+              My talks
+            </a>
+          </span>
+          <span class="text-ctp-text flex gap-4">
+            <a class="w-8 h-8 hover:text-ctp-peach" href="https://github.com/nim65s/homepage">
+              {{ github }}
+            </a>
+            <a class="w-8 h-8 hover:text-ctp-peach" href="https://gitlab.laas.fr/gsaurel/homepage">
+              {{ gitlab }}
+            </a>
+          </span>
+        </h1>
+      </header>
+      <hr>
+      <main class="m-8">
+        {% for _, _, _, stem, talk in talks %}
+          <section class="mt-24">
+            <div
+              onclick="document.getElementById('{{ stem }}').scrollIntoView({ behavior: 'smooth' });
+              setTimeout(() => location.hash = '#{{ stem }}', 500)"
+              class="border-r-2 border-b-2 rounded-br-lg border-ctp-yellow p-4 hover:bg-ctp-mantle bg-gradient-to-l from-ctp-mantle"
+              id="{{ stem }}">
+
+              <div class="float-right text-ctp-lavender">
+                <time datetime="{{ talk.date }}" class="font-mono">
+                  {{ talk.date }}
+                </time>
+              </div>
+              <h2 class="text-2xl mb-1 text-ctp-red">{{ talk.title }}</h2>
+              {% if talk.subtitle %}<h3 class="text-xl text-ctp-sapphire">{{ talk.subtitle }}</h3>{% endif %}
+            </div>
+            <dl>
+              <a href="{{ stem }}.pdf">
+                <div class="border-r border-b rounded-br-lg border-ctp-green py-2 mx-8 columns-2 hover:bg-ctp-crust bg-gradient-to-l from-ctp-crust">
+                  <dt class="w-full text-right text-ctp-lavender">Slides</dt>
+                  <dd class="w-full font-mono text-sm p-1 underline text-ctp-blue">{{ stem }}.pdf</dd>
+                </div>
+              </a>
+              {% for link in talk.urls %}
+                <a href="{{ link.url }}">
+                  <div class="border-r border-b rounded-br-lg border-ctp-green py-2 mx-8 columns-2 hover:bg-ctp-crust bg-gradient-to-l from-ctp-crust">
+                    <dt class="w-full text-right text-ctp-lavender">{{ link.name }}</dt>
+                    <dd class="w-full font-mono text-sm p-1 underline text-ctp-blue">{{ link.url|url_format }}</dd>
+                  </div>
+                </a>
+              {% endfor %}
+            </dl>
+          </section>
+        {% endfor %}
+      </main>
+    </div>
+  </body>
+</html>
