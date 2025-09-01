@@ -2,18 +2,21 @@ PREFIX=/usr/local/homepages/gsaurel
 
 TALKS_SOURCES = $(wildcard talks/*.typ)
 TALKS_OUTPUTS = $(TALKS_SOURCES:talks/%.typ=public/%.pdf)
+TEACH_SOURCES = $(wildcard teach/*/*/*.typ)
+TEACH_OUTPUTS = $(TEACH_SOURCES:%.typ=public/%.pdf)
 
 all: css html pdfs svgs
 html: talks-html
-pdfs: talks-pdfs
+pdfs: talks-pdfs teach-pdfs
 
 css: public/style.css
 svgs: public/creativecommons.svg
 
 talks-html: public/talks.html
 talks-pdfs: ${TALKS_OUTPUTS}
+teach-pdfs: ${TEACH_OUTPUTS}
 
-public/%.pdf: talks/%.typ my-slides.typ
+public/%.pdf: %.typ my-slides.typ
 	typst compile --root . $< $@
 
 public/talks.html: ${TALKS_SOURCES} src/homepage/talks_index.py template.html svgs
@@ -34,7 +37,7 @@ install:
 	@mkdir -p $(PREFIX)
 	install -Dm 644 public/* -t $(PREFIX)
 
-watch-talk: $(TALK) my-slides.typ
+watch: $(TALK) my-slides.typ
 	typst watch --root . --open zathura $(TALK) public/$(TALK:.typ=.pdf)
 
 update:

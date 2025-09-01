@@ -22,19 +22,22 @@
 )
 }
 
-#let about-this-presentation(file) = {
-  let url = "https://homepages.laas.fr/gsaurel/" + file + ".pdf"
+#let about-this-presentation = {
+  let gurl = "https://nim65s.github.io/"
+  let lurl = "https://homepages.laas.fr/gsaurel/"
   laas-slide(title: "About this presentation", alignment: horizon + center)[
 
     *Available at*
 
-    #link(url)[ #url ]
+    #link(lurl)[ #lurl ]
+
+    #link(gurl)[ #gurl ]
 
     *Under license*
 
-    #box(image("media/cc.png", width: 3cm))
-    #box(image("media/by.png", width: 3cm))
-    #box(image("media/sa.png", width: 3cm))
+    #box(image("media/cc.png", width: 1.5cm))
+    #box(image("media/by.png", width: 1.5cm))
+    #box(image("media/sa.png", width: 1.5cm))
 
     https://creativecommons.org/licenses/by-sa/4.0/
 

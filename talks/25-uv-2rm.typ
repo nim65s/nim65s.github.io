@@ -317,4 +317,4 @@
 
 #section-slide(rainbow[questions])
 
-#about-this-presentation("25-uv-2rm")
+#about-this-presentation
