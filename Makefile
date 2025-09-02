@@ -3,7 +3,7 @@ PREFIX=/usr/local/homepages/gsaurel
 TALKS_SOURCES = $(wildcard talks/*.typ)
 TALKS_OUTPUTS = $(TALKS_SOURCES:talks/%.typ=public/%.pdf)
 TEACH_SOURCES = $(wildcard teach/*/*/*.typ)
-TEACH_OUTPUTS = $(TEACH_SOURCES:%.typ=public/%.pdf)
+TEACH_OUTPUTS = $(TEACH_SOURCES:teach/%.typ=public/teach/%.pdf)
 
 all: css html pdfs svgs
 html: talks-html teach-html
@@ -17,7 +17,11 @@ teach-html: public/teach.html
 talks-pdfs: ${TALKS_OUTPUTS}
 teach-pdfs: ${TEACH_OUTPUTS}
 
-public/%.pdf: %.typ my-slides.typ
+public/%.pdf: talks/%.typ my-slides.typ
+	typst compile --root . $< $@
+
+public/teach/2025-2026/M2_ISTR/%.pdf: teach/2025-2026/M2_ISTR/%.typ my-slides.typ
+	mkdir -p public/teach/2025-2026/M2_ISTR
 	typst compile --root . $< $@
 
 public/talks.html: ${TALKS_SOURCES} src/homepage/talks_index.py template.html svgs
