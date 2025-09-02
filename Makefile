@@ -6,13 +6,14 @@ TEACH_SOURCES = $(wildcard teach/*/*/*.typ)
 TEACH_OUTPUTS = $(TEACH_SOURCES:%.typ=public/%.pdf)
 
 all: css html pdfs svgs
-html: talks-html
+html: talks-html teach-html
 pdfs: talks-pdfs teach-pdfs
 
 css: public/style.css
 svgs: public/creativecommons.svg
 
 talks-html: public/talks.html
+teach-html: public/teach.html
 talks-pdfs: ${TALKS_OUTPUTS}
 teach-pdfs: ${TEACH_OUTPUTS}
 
@@ -21,6 +22,9 @@ public/%.pdf: %.typ my-slides.typ
 
 public/talks.html: ${TALKS_SOURCES} src/homepage/talks_index.py template.html svgs
 	talks-index
+
+public/teach.html: ${TEACH_SOURCES} src/homepage/teach_index.py template.html svgs
+	teach-index
 
 .yarn/install-state.gz:
 	yarn install
@@ -38,7 +42,7 @@ install:
 	install -Dm 644 public/* -t $(PREFIX)
 
 watch: $(TALK) my-slides.typ
-	typst watch --root . --open zathura $(TALK) public/$(TALK:.typ=.pdf)
+	typst watch --root . $(TALK) public/$(TALK:.typ=.pdf)
 
 update:
 	nix flake update

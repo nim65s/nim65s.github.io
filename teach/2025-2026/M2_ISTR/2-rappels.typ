@@ -226,7 +226,7 @@ for color in colors:
 #section-slide("Objets")
 
 #laas-slide(title: "C++")[
-#set text(size: 18pt)
+#set text(size: 20pt)
 ```cpp
 class Robot {
 public:
@@ -248,7 +248,7 @@ auto main() -> int {
 ]
 
 #laas-slide(title: "Python")[
-#set text(size: 18pt)
+#set text(size: 20pt)
 ```python
 class Robot:
     battery = 100
@@ -269,7 +269,7 @@ if __name__ == "__main__":
 ]
 
 #laas-slide(title: "Héritage: C++")[
-#set text(size: 18pt)
+#set text(size: 20pt)
 ```cpp
 class LeggedRobot : public Robot {
 public:
@@ -287,8 +287,8 @@ auto main() -> int {
 ```
 ]
 
-#laas-slide(title: "Héritiage: Python")[
-#set text(size: 18pt)
+#laas-slide(title: "Héritage: Python")[
+#set text(size: 20pt)
 ```python
 class LeggedRobot(Robot):
     def walk(self):
@@ -300,5 +300,70 @@ if __name__ == "__main__":
     robot.work()
     robot.walk()
     print(robot.get_battery(), "% remaining")
+```
+]
+
+#laas-slide(title: "Constructeurs: C++")[
+#set text(size: 20pt)
+```cpp
+class Robot {
+public:
+  Robot() {}
+  Robot(int bat) : battery{bat} {}
+  auto work() { battery -= 5; }
+  auto get_battery() const -> int { return battery; }
+
+protected:
+  int battery{100};
+};
+
+auto main() -> int {
+  auto robot = Robot{};
+  auto bigRobot = Robot{350};
+  return 0;
+```
+]
+
+#laas-slide(title: "Constructeurs: Python")[
+#set text(size: 20pt)
+```python
+class Robot:
+    battery = 100
+
+    def __init__(self, bat=100):
+        self.battery = bat
+
+    def work(self):
+        self.battery -= 5
+
+    def get_battery(self) -> int:
+        return self.battery
+
+
+if __name__ == "__main__":
+    robot = Robot()
+    big_robot = Robot(350)
+```
+]
+
+#laas-slide(title: "Destructeurs: C++")[
+```cpp
+class Robot {
+public:
+  Robot(int bat) : battery{bat} {}
+  ~Robot() { std::cout << "Destruction at " << battery << "\n"; }
+  auto work() { battery -= 5; }
+  auto get_battery() const -> int { return battery; }
+
+protected:
+  int battery{100};
+};
+```
+]
+
+#laas-slide(title: "Destructeurs: Python")[
+Garbage collector
+```
+__del__
 ```
 ]

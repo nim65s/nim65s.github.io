@@ -13,6 +13,7 @@ dependencies = [
 
 [project.scripts]
 talks-index = "homepage:talks_index"
+teach-index = "homepage:teach_index"
 
 [build-system]
 requires = ["uv_build>=0.8.2,<0.9.0"]

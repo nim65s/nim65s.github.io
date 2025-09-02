@@ -23,6 +23,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       ../src
       ../style.css
       ../talks
+      ../teach
       ../template.html
       ../yarn.lock
     ];
