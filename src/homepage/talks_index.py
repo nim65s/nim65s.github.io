@@ -19,7 +19,7 @@ def get_talks():
 
     old = Path("public/.old-talks.json")
     if old.exists():
-        talks = loads(old.read_text())
+        talks = [[y, m, d, "talks", s, f] for (y, m, d, s, f) in loads(old.read_text())]
 
     for f in Path("talks").glob("*.typ"):
         meta = {"urls": []}
@@ -33,11 +33,10 @@ def get_talks():
             else:
                 meta[label] = entry["value"]
         date = datetime.strptime(meta["date"], "%Y-%m-%d")
-        meta["date"] = date
         y = date.year
         m = date.month
         d = date.day
-        talks.append([y, m, d, f.stem, meta])
+        talks.append([y, m, d, "talks", f.stem, meta])
 
     return sorted(talks, reverse=True)
 
@@ -49,7 +48,8 @@ def main():
     icons = ["creativecommons", "github", "gitlab"]
     talks = get_talks()
     ctx = {
-        "talks": talks,
+        "page": "Talks",
+        "files": talks,
         **{icon: Path(f"public/{icon}.svg").read_text() for icon in icons},
     }
     Path("public/talks.html").write_text(template.render(ctx))

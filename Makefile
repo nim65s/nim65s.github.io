@@ -1,7 +1,7 @@
 PREFIX=/usr/local/homepages/gsaurel
 
 TALKS_SOURCES = $(wildcard talks/*.typ)
-TALKS_OUTPUTS = $(TALKS_SOURCES:talks/%.typ=public/%.pdf)
+TALKS_OUTPUTS = $(TALKS_SOURCES:talks/%.typ=public/talks/%.pdf)
 TEACH_SOURCES = $(wildcard teach/*/*/*.typ)
 TEACH_OUTPUTS = $(TEACH_SOURCES:teach/%.typ=public/teach/%.pdf)
 
@@ -17,11 +17,8 @@ teach-html: public/teach.html
 talks-pdfs: ${TALKS_OUTPUTS}
 teach-pdfs: ${TEACH_OUTPUTS}
 
-public/%.pdf: talks/%.typ my-slides.typ
-	typst compile --root . $< $@
-
-public/teach/2025-2026/M2_ISTR/%.pdf: teach/2025-2026/M2_ISTR/%.typ my-slides.typ
-	mkdir -p public/teach/2025-2026/M2_ISTR
+public/%.pdf: %.typ my-slides.typ
+	mkdir -p $(shell dirname $@)
 	typst compile --root . $< $@
 
 public/talks.html: ${TALKS_SOURCES} src/homepage/talks_index.py template.html svgs
@@ -42,8 +39,15 @@ public/creativecommons.svg: package.json yarn.lock .yarn/install-state.gz icons.
 check: all
 
 install:
-	@mkdir -p $(PREFIX)
-	install -Dm 644 public/* -t $(PREFIX)
+	mkdir -p $(PREFIX)/talks
+	install -Dm 644 public/*.{html,css,svg} -t $(PREFIX)
+	install -Dm 644 public/talks/*.pdf -t $(PREFIX)/talks/
+	cd public/teach ; for y in *; do \
+		for p in $$y/*; do \
+			mkdir -p $(PREFIX)/$$p ; \
+			install -Dm 644 $$p/*.pdf -t $(PREFIX)/$$p ; \
+		done; \
+	done;
 
 watch: $(TALK) my-slides.typ
 	typst watch --root . $(TALK) public/$(TALK:.typ=.pdf)

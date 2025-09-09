@@ -17,23 +17,26 @@ def url_format(value):
 def get_teach():
     teach = []
 
-    for f in Path("teach").glob("*.typ"):
-        meta = {"urls": []}
-        for entry in loads(
-            check_output(["typst", "query", "--root", ".", f, "metadata"])
-        ):
-            label = entry["label"].strip("<>")
-            if label == "urls":
-                name, url = entry["value"].split("|")
-                meta[label].append({"name": name, "url": url})
-            else:
-                meta[label] = entry["value"]
-        date = datetime.strptime(meta["date"], "%Y-%m-%d")
-        meta["date"] = date
-        y = date.year
-        m = date.month
-        d = date.day
-        teach.append([y, m, d, f.stem, meta])
+    for dir_path, _, files in Path("teach").walk():
+        for file_name in files:
+            if not file_name.endswith(".typ"):
+                continue
+            f = dir_path / file_name
+            meta = {"urls": []}
+            for entry in loads(
+                check_output(["typst", "query", "--root", ".", f, "metadata"])
+            ):
+                label = entry["label"].strip("<>")
+                if label == "urls":
+                    name, url = entry["value"].split("|")
+                    meta[label].append({"name": name, "url": url})
+                else:
+                    meta[label] = entry["value"]
+            date = datetime.strptime(meta["date"], "%Y-%m-%d")
+            y = date.year
+            m = date.month
+            d = date.day
+            teach.append([y, m, d, str(dir_path), f.stem, meta])
 
     return sorted(teach, reverse=True)
 
@@ -45,7 +48,8 @@ def main():
     icons = ["creativecommons", "github", "gitlab"]
     teach = get_teach()
     ctx = {
-        "teach": teach,
+        "page": "Teach",
+        "files": teach,
         **{icon: Path(f"public/{icon}.svg").read_text() for icon in icons},
     }
     Path("public/teach.html").write_text(template.render(ctx))

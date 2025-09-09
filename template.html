@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>My talks</title>
+    <title>{{ page }}</title>
     <link href="./style.css" rel="stylesheet">
   </head>
   <body class="min-h-screen bg-ctp-base text-ctp-text">
@@ -14,9 +14,7 @@
             </a>
           </span>
           <span class="text-ctp-teal">
-            <a href="#">
-              My talks
-            </a>
+            <a href="#">{{ page }}</a>
           </span>
           <span class="text-ctp-text flex gap-4">
             <a class="w-8 h-8 hover:text-ctp-peach" href="https://github.com/nim65s/homepage">
@@ -30,7 +28,7 @@
       </header>
       <hr>
       <main class="m-8">
-        {% for _, _, _, stem, talk in talks %}
+        {% for _, _, _, path, stem, file in files %}
           <section class="mt-24">
             <div
               onclick="document.getElementById('{{ stem }}').scrollIntoView({ behavior: 'smooth' });
@@ -39,21 +37,21 @@
               id="{{ stem }}">
 
               <div class="float-right text-ctp-lavender">
-                <time datetime="{{ talk.date }}" class="font-mono">
-                  {{ talk.date }}
+                <time datetime="{{ file.date }}" class="font-mono">
+                  {{ file.date }}
                 </time>
               </div>
-              <h2 class="text-2xl mb-1 text-ctp-red">{{ talk.title }}</h2>
-              {% if talk.subtitle %}<h3 class="text-xl text-ctp-sapphire">{{ talk.subtitle }}</h3>{% endif %}
+              <h2 class="text-2xl mb-1 text-ctp-red">{{ file.title }}</h2>
+              {% if file.subtitle %}<h3 class="text-xl text-ctp-sapphire">{{ file.subtitle }}</h3>{% endif %}
             </div>
             <dl>
-              <a href="{{ stem }}.pdf">
+              <a href="{{ path }}/{{ stem }}.pdf">
                 <div class="border-r border-b rounded-br-lg border-ctp-green py-2 mx-8 columns-2 hover:bg-ctp-crust bg-gradient-to-l from-ctp-crust">
                   <dt class="w-full text-right text-ctp-lavender">Slides</dt>
                   <dd class="w-full font-mono text-sm p-1 underline text-ctp-blue">{{ stem }}.pdf</dd>
                 </div>
               </a>
-              {% for link in talk.urls %}
+              {% for link in file.urls %}
                 <a href="{{ link.url }}">
                   <div class="border-r border-b rounded-br-lg border-ctp-green py-2 mx-8 columns-2 hover:bg-ctp-crust bg-gradient-to-l from-ctp-crust">
                     <dt class="w-full text-right text-ctp-lavender">{{ link.name }}</dt>
