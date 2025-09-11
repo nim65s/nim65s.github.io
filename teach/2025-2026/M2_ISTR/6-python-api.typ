@@ -11,7 +11,9 @@
 
 #about-this-presentation
 
-#laas-slide(title: "Pre-requisite: constructors & str")[
+#section-slide("Pre-requisite")
+
+#laas-slide(title: "constructors & str")[
   ```python
   class Point:
       def __init__(self, x: int, y: int):
@@ -28,6 +30,18 @@
   ```
 ]
 
+#laas-slide(title: "uv")[
+  #link("https://docs.astral.sh/uv/")[`https://docs.astral.sh/uv/`]
+  ```
+  $ uv --version
+  ```
+  ```
+  $ pipx install uv
+  $ pip install uv
+  $ curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```
+]
+
 #laas-slide(title: "Django", alignment: horizon + center)[
   #image("../../../media/django.png")
 
@@ -35,9 +49,6 @@
 ]
 
 #laas-slide(title: "Django: Quickstart")[
-  ```
-  $ pip install uv
-  ```
   ```
   $ uv init mysite
   $ cd mysite
