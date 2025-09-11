@@ -8,7 +8,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   version = "3.0.0";
 
   src = fetchzip {
-    url = "https://github.com/nim65s/talks/releases/download/v${finalAttrs.version}/nim65s-talks.tar.xz";
+    url = "https://github.com/nim65s/talks-legacy/releases/download/v${finalAttrs.version}/nim65s-talks.tar.xz";
     hash = "sha256-s95GbLZ4+GEAmZr4rpylPfzNg3NepP2YPrJLjBe0sks=";
   };
 
