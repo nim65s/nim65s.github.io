@@ -44,8 +44,8 @@ install:
 	install -Dm 644 public/talks/*.pdf -t $(PREFIX)/talks/
 	cd public/teach ; for y in *; do \
 		for p in $$y/*; do \
-			mkdir -p $(PREFIX)/$$p ; \
-			install -Dm 644 $$p/*.pdf -t $(PREFIX)/$$p ; \
+			mkdir -p $(PREFIX)/teach/$$p ; \
+			install -Dm 644 $$p/*.pdf -t $(PREFIX)/teach/$$p ; \
 		done; \
 	done;
 
