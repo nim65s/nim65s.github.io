@@ -85,8 +85,7 @@ QuantiteMatierePremiere <|-- ApprovisionnementMatierePremiere
 Localisation -* Local::localisation
 Localisation -* ApprovisionnementMatierePremiere::localisation
 Localisation -* Energie::localisation
-MatierePremiere -* ApprovisionnementMatierePremiere::matiere_premiere
-MatierePremiere -* UtilisationMatierePremiere::matiere_premiere
+MatierePremiere -* QuantiteMatierePremiere::matiere_premiere
 Local -* Machine::local
 Local -* Produit::local
 Energie -* DebitEnergie::energie
@@ -96,5 +95,6 @@ Machine -o Fabrication::machines
 Metier -* RessourceHumaine::metier
 RessourceHumaine -o Fabrication::ressources_humaines
 RessourceHumaine -o Machine::operateurs
+DebitEnergie -* Machine::debit_energie
 
 @enduml

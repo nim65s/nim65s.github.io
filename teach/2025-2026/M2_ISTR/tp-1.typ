@@ -130,7 +130,7 @@ $ git push
 Depuis l’UI github:
 
 - Ajoutez un fichier `LICENSE` et choisissez un template
-- Éditez `.gitignore` et choisissez le template python
+- #strike[Éditez `.gitignore` et choisissez le template python]
 
 puis `git pull`
 ]
