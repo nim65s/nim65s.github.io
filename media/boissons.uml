@@ -1,0 +1,100 @@
+@startuml
+
+class Localisation << (M,green) >> {
+  *nom
+  *taxes
+  *prix_m2
+}
+
+class Local << (M,green) >> {
+  *nom
+  *localisation
+  *surface
+}
+
+class MatierePremiere << (M,green) >> {
+  *nom
+  *stock
+  *emprise
+}
+
+class QuantiteMatierePremiere << (A,blue) >> {
+  *quantite
+  *matiere_premiere
+}
+
+class UtilisationMatierePremiere << (M,green) >> {
+}
+
+class ApprovisionnementMatierePremiere << (M,green) >> {
+  *localisation
+  *prix_unitaire
+  *delais
+}
+
+class Machine << (M,green) >> {
+  *nom
+  *prix_achat
+  *cout_maintenance
+  *operateurs
+  *debit
+  *surface
+  *debit_energie
+  *taux_utilisation
+  *local
+}
+
+class DebitEnergie << (M,green) >> {
+  *debit
+  *energie
+}
+
+class Energie << (M,green) >> {
+  *nom
+  *prix
+  *localisation
+}
+
+class Produit << (M,green) >> {
+  *nom
+  *prix_de_vente
+  *quantite
+  *emprise
+  *local
+}
+
+class Fabrication << (M,green) >> {
+  *produit
+  *utilisations_matiere_premiere
+  *machines
+  *ressources_humaines
+}
+
+class Metier << (M,green) >> {
+  *nom
+  *remuneration
+}
+
+class RessourceHumaine << (M,green) >> {
+  *metier
+  *quantite
+}
+
+QuantiteMatierePremiere <|-- UtilisationMatierePremiere
+QuantiteMatierePremiere <|-- ApprovisionnementMatierePremiere
+Localisation -* Local::localisation
+Localisation -* ApprovisionnementMatierePremiere::localisation
+Localisation -* Energie::localisation
+MatierePremiere -* ApprovisionnementMatierePremiere::matiere_premiere
+MatierePremiere -* UtilisationMatierePremiere::matiere_premiere
+Local -* Machine::local
+Local -* Produit::local
+Energie -* DebitEnergie::energie
+Produit -* Fabrication::produit
+UtilisationMatierePremiere -o Fabrication::utilisations_matiere_premiere
+Machine -o Fabrication::machines
+Metier -* RessourceHumaine::metier
+RessourceHumaine -o Fabrication::ressources_humaines
+RessourceHumaine -o Machine::operateurs
+
+@enduml
