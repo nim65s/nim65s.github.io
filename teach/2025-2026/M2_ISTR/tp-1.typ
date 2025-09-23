@@ -148,7 +148,7 @@ $ git push
 ]
 
 #laas-slide(title: "Modèles")[
-#image("../../../media/boissons.png")
+#image("../../../media/boissons.svg")
 #link("https://gitlab.laas.fr/gsaurel/homepage/-/raw/main/media/boissons.svg")
 ]
 
