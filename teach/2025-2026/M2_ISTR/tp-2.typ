@@ -16,7 +16,7 @@
   ```
 ]
 
-#laas-slide(title: "Ligne de commande: requêtes sur un modèle")[
+#laas-slide(title: "Interface interactive python")[
   ```
   $ uv add --dev ipython
   $ ./manage.py shell
@@ -36,8 +36,8 @@
 ]
 
 #laas-slide(title: "Example de fichier de test")[
-Éditez `high_level/tests.py`:
 ```python
+# high_level/tests.py
 from django.test import TestCase
 
 from .models import Machine
@@ -46,10 +46,7 @@ from .models import Machine
 class MachineModelTests(TestCase):
     def test_machine_creation(self):
         self.assertEqual(Machine.objects.count(), 0)
-        Machine.objects.create(nom="Mélangeur",
-                               prix=28_000,
-                               cout_maintenance=900,
-                               ...)
+        Machine.objects.create(nom="Mélangeur", prix=28_000, ...)
         self.assertEqual(Machine.objects.count(), 1)
 ```
 
@@ -77,5 +74,5 @@ Par exemple:
     - 1000 kg de sucre à 10 €/kg
     - 50 m3 d'eau à 15 €/m3
 
-On s’attend à ce que `Usine.objects.first().costs()` vaille 110 750 €
+On s’attend à ce que `Local.objects.first().costs()` vaille 110 750 €
 ]
