@@ -10,9 +10,9 @@
   date: "2025-09-25",
 )
 
-#about-me
-
 #about-this-presentation
+
+#about-me
 
 #laas-slide(title: "Moi (encore)")[
   - Responsable de 100+ logiciels C++ et/ou Python:
@@ -28,7 +28,6 @@
 #laas-slide(title: "Vous")[
   - C++
   - Python
-  - JAVA
   - Git
   - Forges (github, gitlab, …)
 ]
