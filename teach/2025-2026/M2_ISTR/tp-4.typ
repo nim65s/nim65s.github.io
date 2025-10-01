@@ -15,7 +15,6 @@ $ mkdir low_level
 $ cd low_level
 $ wget https://gitlab.laas.fr/gsaurel/homepage\
        /-/raw/main/teach/CMakeLists.txt
-$ uv add cmake meson
 ```
 ]
 
