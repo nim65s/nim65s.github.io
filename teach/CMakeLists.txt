@@ -13,7 +13,7 @@ FetchContent_Declare(
 FetchContent_Declare(
   cpr
   DOWNLOAD_EXTRACT_TIMESTAMP OFF
-  URL "https://github.com/libcpr/cpr/archive/refs/tags/1.12.0.tar.gz")
+  URL "https://github.com/libcpr/cpr/archive/refs/tags/1.11.0.tar.gz")
 FetchContent_MakeAvailable(json cpr)
 
 add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
