@@ -10,6 +10,7 @@ repos:
     rev: v21.1.2
     hooks:
       - id: clang-format
+        exclude: '\.(js|json|mjs|cjs)$'
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
