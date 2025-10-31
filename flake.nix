@@ -3,7 +3,7 @@
 
   inputs = {
     laas-cnrs-typst-templates = {
-      url = "https://gitlab.laas.fr/gsaurel/laas-cnrs-typst-templates/-/archive/main/laas-cnrs-typst-templates-main.tar.gz";
+      url = "git+https://gitlab.laas.fr/pi2/laas-cnrs-typst-templates.git";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
