@@ -36,43 +36,43 @@
 ]
 
 #laas-slide(title: "Example de fichier de test")[
-```python
-# high_level/tests.py
-from django.test import TestCase
+  ```python
+  # high_level/tests.py
+  from django.test import TestCase
 
-from .models import Machine
+  from .models import Machine
 
 
-class MachineModelTests(TestCase):
-    def test_machine_creation(self):
-        self.assertEqual(Machine.objects.count(), 0)
-        Machine.objects.create(nom="Mélangeur", prix=28_000, ...)
-        self.assertEqual(Machine.objects.count(), 1)
-```
+  class MachineModelTests(TestCase):
+      def test_machine_creation(self):
+          self.assertEqual(Machine.objects.count(), 0)
+          Machine.objects.create(nom="Mélangeur", prix=28_000, ...)
+          self.assertEqual(Machine.objects.count(), 1)
+  ```
 
-`$ ./manage.py test`
+  `$ ./manage.py test`
 ]
 
 #laas-slide(title: "Calcul des coûts")[
-Implémentez une méthode "`def costs(self):`" dans chaque modèle où ça a un sens:
+  Implémentez une méthode "`def costs(self):`" dans chaque modèle où ça a un sens:
 
-- `DebitEnergie`
-- `ApprovisionnementMatierePremiere`
-- `Local`
-- `RessourceHumaine`
-- `Machine`
+  - `DebitEnergie`
+  - `ApprovisionnementMatierePremiere`
+  - `Local`
+  - `RessourceHumaine`
+  - `Machine`
 ]
 
 #laas-slide(title: "Écrire un test unitaire")[
-Implémentez un scenario de test qui valide le calcul des coûts dans un cas connu.
-Par exemple:
+  Implémentez un scenario de test qui valide le calcul des coûts dans un cas connu.
+  Par exemple:
 
-- un `Local` de 50 m²
-- dans la `Localisation` Labège à 2 000 €/m²
-- avec une `Machine` à 1 000 €, et une autre à 2 000 €
-- et en stock
+  - un `Local` de 50 m²
+  - dans la `Localisation` Labège à 2 000 €/m²
+  - avec une `Machine` à 1 000 €, et une autre à 2 000 €
+  - et en stock
     - 1000 kg de sucre à 10 €/kg
     - 50 m3 d'eau à 15 €/m3
 
-On s’attend à ce que `Local.objects.first().costs()` vaille 110 750 €
+  On s’attend à ce que `Local.objects.first().costs()` vaille 110 750 €
 ]
