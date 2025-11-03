@@ -13,7 +13,7 @@
 
   - curl: `curl --version`
   - Git: `git --version`
-  - uv: `curl -LsSf \ https://astral.sh/uv/install.sh | sh`
+  - uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 ]
 
@@ -43,6 +43,14 @@
   ```
 
   #link("https://github.com/settings/ssh/new")
+
+  Test:
+  ```
+  $ ssh git@github.com
+  PTY allocation request failed on channel 0
+  Hi nim65s! You've successfully authenticated, but GitHub does not provide shell access.
+  Connection to github.com closed.
+  ```
 ]
 
 #laas-slide(title: "Configuration de git")[
