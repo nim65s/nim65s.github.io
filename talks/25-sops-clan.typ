@@ -82,7 +82,7 @@
 
 #section-slide("Demo")
 
-#laas-slide(title: "disk encryption")[
+#laas-slide(title: "Chiffrement de disque")[
   Yakafokon !
 
   ==> Session Bidouille
