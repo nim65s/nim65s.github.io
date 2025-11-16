@@ -54,7 +54,7 @@
 ]
 
 #laas-slide(title: "IDE / Éditeur de texte")[
-  - Formattage
+  -  Formattage
   - Linters
   - Autocomplétion
   - Gestion des versions
