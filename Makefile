@@ -38,7 +38,7 @@ public/creativecommons.svg: package.json yarn.lock .yarn/install-state.gz icons.
 
 check: all
 
-install:
+install: all
 	mkdir -p $(PREFIX)/talks
 	install -Dm 644 public/*.{html,css,svg} -t $(PREFIX)
 	install -Dm 644 public/talks/*.pdf -t $(PREFIX)/talks/
@@ -48,6 +48,9 @@ install:
 			install -Dm 644 $$p/*.pdf -t $(PREFIX)/teach/$$p ; \
 		done; \
 	done;
+
+rsync: all
+	rsync -avzP public/ homepages.laas.fr:
 
 watch: $(TALK) my-slides.typ
 	typst watch --root . $(TALK) public/$(TALK:.typ=.pdf)
