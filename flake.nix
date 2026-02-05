@@ -106,6 +106,7 @@
               excludes = [
                 "public/.old-talks.json"
                 "public/style.css"
+                "style.css"
               ];
             };
             deadnix.enable = true;
