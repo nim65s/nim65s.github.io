@@ -30,6 +30,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       ../src
       ../style.css
       ../talks
+      ../tailwind.config.js
       ../teach
       ../template.html
     ];
