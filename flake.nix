@@ -104,11 +104,8 @@
             biome = {
               enable = true;
               excludes = [
-                ".pnp.cjs"
-                ".pnp.loader.mjs"
                 "public/.old-talks.json"
                 "public/style.css"
-                "pkgs/missing-hashes.json"
               ];
             };
             deadnix.enable = true;
@@ -119,7 +116,12 @@
               format = true;
             };
             typstyle.enable = true;
-            yamlfmt.enable = true;
+            yamlfmt = {
+              enable = true;
+              excludes = [
+                "pnpm-lock.yaml"
+              ];
+            };
           };
         };
     };
