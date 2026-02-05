@@ -83,7 +83,6 @@
                 pkgs.pdfpc
                 pkgs.typst-laas
                 pkgs.watchexec
-                pkgs.yarn-berry_4.yarn-berry-fetcher
                 self'.packages.editableVirtualenv
               ];
               shellHook = ''

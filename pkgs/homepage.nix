@@ -2,14 +2,20 @@
   lib,
   stdenvNoCC,
 
+  fetchPnpmDeps,
+
+  nodejs,
+  pnpmConfigHook,
+  pnpm,
+
   homepage-venv,
   nerd-fonts,
   nim65s-talks,
   typst-laas,
-  yarn-berry_4,
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
-  name = "homepage";
+  pname = "homepage";
+  version = "1.0.0";
 
   src = lib.fileset.toSource {
     root = ../.;
@@ -19,20 +25,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       ../media
       ../my-slides.typ
       ../package.json
+      ../pnpm-lock.yaml
       ../public/index.html
       ../src
       ../style.css
       ../talks
       ../teach
       ../template.html
-      ../yarn.lock
     ];
-  };
-
-  missingHashes = ./missing-hashes.json;
-  offlineCache = yarn-berry_4.fetchYarnBerryDeps {
-    inherit (finalAttrs) src missingHashes;
-    inherit (lib.importJSON ./lock-hash.json) hash;
   };
 
   env = {
@@ -52,14 +52,21 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     homepage-venv.passthru.virtualenv
     typst-laas
-    yarn-berry_4
-    yarn-berry_4.yarnBerryConfigHook
+    nodejs
+    pnpmConfigHook
+    pnpm
   ];
 
   preBuild = ''
     cp ${nim65s-talks}/*.pdf public
     cp ${nim65s-talks}/.metadata.json public/.old-talks.json
   '';
+
+  pnpmDeps = fetchPnpmDeps {
+    inherit (finalAttrs) pname version src;
+    fetcherVersion = 3;
+    hash = "sha256-v/gGzoYBxDCNR5YfwB0iadcQKfoXP/JMNJdDzRMndK8=";
+  };
 
   meta = {
     description = "my homepage";

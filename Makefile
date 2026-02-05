@@ -27,14 +27,14 @@ public/talks.html: ${TALKS_SOURCES} src/homepage/talks_index.py template.html sv
 public/teach.html: ${TEACH_SOURCES} src/homepage/teach_index.py template.html svgs
 	teach-index
 
-.yarn/install-state.gz:
-	yarn install
+node_modules/tailwindcss/README.md:
+	pnpm install
 
-public/style.css: style.css template.html public/index.html package.json yarn.lock .yarn/install-state.gz
-	yarn css
+public/style.css: style.css template.html public/index.html package.json pnpm-lock.yaml node_modules/tailwindcss/README.md
+	pnpm css
 
-public/creativecommons.svg: package.json yarn.lock .yarn/install-state.gz icons.js
-	yarn svg
+public/creativecommons.svg: package.json pnpm-lock.yaml node_modules/tailwindcss/README.md
+	pnpm svg
 
 check: all
 
@@ -59,9 +59,7 @@ update:
 	nix flake update
 	uv lock -U
 	pre-commit autoupdate
-	yarn up
-	yarn-berry-fetcher missing-hashes yarn.lock > ./pkgs/missing-hashes.json
-	echo "{ \"hash\": \"`yarn-berry-fetcher prefetch yarn.lock pkgs/missing-hashes.json`\" }" > ./pkgs/lock-hash.json
+	pnpm update up
 
 nim65s-talks:
 	nix build .#nim65s-talks
