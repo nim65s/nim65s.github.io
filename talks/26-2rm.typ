@@ -107,9 +107,9 @@
 #section-slide("Nix")
 
 #laas-slide(title: "Features")[
-  - DX: ✅ `nix develop` / direnv
   - CI: ✅ `nix build`
   - UX: ✅ `nix run`
+  - DX: ✅ `nix develop` / direnv
   - CD: ✅ `github:stack-of-tasks/pinocchio/v4.0.0`
 ]
 
@@ -126,10 +126,13 @@
   - distribution: `https://github.com/NixOS/nixpkgs`
   - source: `flake.nix`
   ```nix
-  inputs.pkgs.url = "github:NixOS/nixpkgs";
-  outputs.packages.pinocchio = inputs.pkgs.pinocchio.overrideAttrs {
-    src = ./.;
-  };
+  {
+    inputs.pkgs.url = "github:NixOS/nixpkgs";
+    outputs.packages.pinocchio =
+      inputs.pkgs.pinocchio.overrideAttrs {
+        src = ./.;
+      };
+  }
   ```
 ]
 
@@ -157,8 +160,10 @@
 #laas-slide(title: "Overlays")[
   ```nix
   {
-    inputs.flakoboros.url = "github:gepetto/flakoboros";
-    inputs.jrl-cmake.url = "github:jrl-umi3218/jrl-cmakemodules";
+    inputs = {
+      flakoboros.url = "github:gepetto/flakoboros";
+      jrl-cmake.url = "github:jrl-umi3218/jrl-cmakemodules";
+    };
     outputs = inputs: inputs.flakoboros.lib.mkFlakoboros inputs (
       { lib, ... }: {
         overlays = [ inputs.jrl-cmake.overlays.flakoboros ];
