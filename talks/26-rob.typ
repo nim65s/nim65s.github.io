@@ -6,7 +6,7 @@
   doc,
   presentation_title: "ROS Software with Nix",
   presentation_subtitle: "Gazebros2nix & Flakoboros",
-  date: "2026-06-28",
+  date: "2026-05-28",
 )
 
 #section-slide("ROS: Source & Distribution")
