@@ -5,15 +5,15 @@
 #show: doc => my-slides(
   doc,
   presentation_title: "flakoboros",
-  presentation_subtitle: "introduction au packaging circulaire pour ROS",
+  presentation_subtitle: "Introduction au packaging circulaire pour ROS",
   presentation_logos: box(height: 3cm, stack(
     dir: ltr,
-    spacing: 10%,
+    spacing: 9%,
     "",
     image(height: 2cm, fit: "contain", "../media/agimus.png"),
     image(height: 2cm, fit: "contain", "../media/tirrex.svg"),
     image(
-      height: 3cm,
+      height: 4cm,
       fit: "contain",
       "../media/rosconfr26.png",
     ),
@@ -78,6 +78,7 @@
 
   - nix-ros-overlay: 8_000+ paquets
   - NUR: 6_000+ paquets
+  - gazebros2nix: 400+ paquets
 ]
 
 #laas-slide(title: "Packaging circulaire")[
@@ -93,11 +94,6 @@
       };
   }
   ```
-]
-
-#laas-slide(title: "Maintenance")[
-  - Impacts des mises à jour de nixpkgs dans pinochhio
-  - Impacts des mises à jour de pinocchio dans nixpkgs
 ]
 
 #section-slide("Flakoboros")
@@ -205,7 +201,7 @@
   - Sébastien Kleff (AUCTUS, INRIA)
 ]
 
-#laas-slide(title: "Vous")[
+#laas-slide(title: "Vous :)")[
   Liens:
   - #link("https://github.com/NixOS/nixpkgs")
   - #link("https://github.com/lopsided98/nix-ros-overlay")
