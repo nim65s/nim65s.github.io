@@ -5,35 +5,33 @@
 #show: doc => my-slides(
   doc,
   presentation_title: "flakoboros",
-  presentation_subtitle: "l’introduction au packaging circulaire pour ROS",
+  presentation_subtitle: "introduction au packaging circulaire pour ROS",
   date: "2026-06-27",
 )
 
 #section-slide("Source & Distribution")
 
 #laas-slide(title: "Objectif")[
-  - maintenir un dépôt de code source
-  - faciliter son utilisation
+  - maintenir 100+ dépôts de code source
+  - faciliter leur utilisation
 ]
 
 #laas-slide(title: "Objectif")[
-  - maintenir un dépôt de code source
-  - faciliter son utilisation
+  - maintenir 100+ dépôts de code source
+  - faciliter leur utilisation
     - => `apt install`
 ]
 
 #laas-slide(title: "Objectif")[
-  - maintenir un dépôt de code source
-  - faciliter son utilisation
-    - => `apt install`
-    - => distribution
-]
-
-#laas-slide(title: "Objectif")[
-  - maintenir un dépôt de code source
-  - faciliter son utilisation
+  - maintenir 100+ dépôts de code source
+  - faciliter leur utilisation
     - => `apt install`
     - => distribution
+]
+
+#laas-slide(title: "Packaging circulaire")[
+  - réutiliser les informations de la distribution dans la source
+  - maintenance de la source et de la distriubtion facilitées
 ]
 
 #laas-slide(title: "Packaging circulaire")[
@@ -76,9 +74,9 @@
   - source: `flake.nix`
   ```nix
   {
-    inputs.pkgs.url = "github:NixOS/nixpkgs";
+    inputs.nixpkgs.url = "github:NixOS/nixpkgs";
     outputs.packages.pinocchio =
-      inputs.pkgs.pinocchio.overrideAttrs {
+      inputs.nixpkgs.pinocchio.overrideAttrs {
         src = ./.;
       };
   }
@@ -95,11 +93,12 @@
 #laas-slide(title: "API")[
   ```nix
   {
-    description = "Bindings between Numpy and Eigen";
     inputs.flakoboros.url = "github:gepetto/flakoboros";
     outputs = inputs: inputs.flakoboros.lib.mkFlakoboros inputs (
       { lib, ... }: {
-        pyOverrideAttrs.eigenpy = { src = lib.cleanSource ./.; };
+        overrideAttrs.pinocchio = {
+          src = lib.cleanSource ./.;
+        };
       }
     );
   }
@@ -116,7 +115,7 @@
     outputs = inputs: inputs.flakoboros.lib.mkFlakoboros inputs (
       { lib, ... }: {
         overlays = [ inputs.jrl-cmake.overlays.flakoboros ];
-        pyOverrideAttrs.eigenpy = { src = lib.cleanSource ./.; };
+        overrideAttrs.pinocchio = { src = lib.cleanSource ./.; };
       }
     );
   }
@@ -138,36 +137,46 @@
   ]
 ]
 
-#laas-slide(title: "Gazebros2nix")[
+#laas-slide(title: "Gazebros2nix (rappel ROSConFr25)")[
   - nix-ros-overlay for gazebodistro
   - community ROS packages
 ]
 
-#laas-slide(title: "ROS Meta-packages")[
+#laas-slide(title: "ROS Meta-packages: API")[
   ```nix
-  {
-    inputs.gazebros2nix.url = "github:gepetto/gazebros2nix";
-    outputs = inputs: inputs.flakoboros.lib.mkFlakoboros inputs (
-      { lib, ... }: {
-        pyOverrideAttrs.eigenpy = { src = lib.cleanSource ./.; };
-      }
-    );
-  }
+  inputs.gazebros2nix.url = "github:gepetto/gazebros2nix";
+  outputs = inputs: inputs.flakoboros.lib.mkFlakoboros inputs (
+    { lib, ... }: {
+      rosOverrideAttrs = {
+        agimus-demo-03-mpc-dummy-traj = {
+          src = lib.cleanSource ./agimus_demo_03_mpc_dummy_traj; };
+        agimus-demos-common = {
+          src = lib.cleanSource ./agimus_demos_common; };
+        agimus-demos-controllers = {
+          src = lib.cleanSource ./agimus_demos_controllers; };
+      };
+    }
+  );
+  ```
+]
+
+#laas-slide(title: "ROS Meta-packages: example use")[
+  ```bash
+  nix shell github:agimus-project/agimus-demos/main#ros-jazzy \
+    --command ros2 launch \
+                   agimus_demo_03_mpc_dummy_traj \
+                   bringup.launch.py \
+                   use_gazebo:=true \
+                   use_rviz:=true
   ```
 
+  (#link("https://gepetto.github.io/flakoboros/howto/setup-nix"))
 ]
 
 #laas-slide(title: "ROS Workspaces")[
   - `git clone` / `vcs import`
-  - `flakoboros` (New !)
+  - `flakoboros` (Nouveau !)
   - `colcon build`
-]
-
-#laas-slide(title: "Bring your own distribution(s)")[
-  - nixpkgs
-  - nix-ros-overlay
-  - gazebros2nix
-  - gepetto
 ]
 
 #laas-slide(title: "un logo et de la doc !", alignment: horizon + center)[
@@ -190,4 +199,6 @@
   - #link("https://github.com/lopsided98/nix-ros-overlay")
   - #link("https://github.com/gepetto/flakoboros")
   - #link("https://github.com/gepetto/gazebros2nix")
+  - Tchap: 2RM-Nix
+  - Matrix: `#flakoboros:laas.fr`
 ]
