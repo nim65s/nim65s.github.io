@@ -4,7 +4,7 @@
 
 #show: doc => my-slides(
   doc,
-  presentation_title: "flakoboros",
+  presentation_title: "Flakoboros",
   presentation_subtitle: "Introduction au packaging circulaire pour ROS",
   presentation_logos: box(height: 3cm, stack(
     dir: ltr,
