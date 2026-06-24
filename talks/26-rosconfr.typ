@@ -6,6 +6,18 @@
   doc,
   presentation_title: "flakoboros",
   presentation_subtitle: "introduction au packaging circulaire pour ROS",
+  presentation_logos: box(height: 3cm, stack(
+    dir: ltr,
+    spacing: 10%,
+    "",
+    image(height: 2cm, fit: "contain", "../media/agimus.png"),
+    image(height: 2cm, fit: "contain", "../media/tirrex.svg"),
+    image(
+      height: 3cm,
+      fit: "contain",
+      "../media/rosconfr26.png",
+    ),
+  )),
   date: "2026-06-27",
 )
 
