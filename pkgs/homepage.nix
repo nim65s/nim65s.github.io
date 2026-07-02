@@ -59,7 +59,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   ];
 
   preBuild = ''
-    cp ${nim65s-talks}/*.pdf public
+    mkdir -p public/talks
+    cp ${nim65s-talks}/*.pdf public/talks
     cp ${nim65s-talks}/.metadata.json public/.old-talks.json
   '';
 
