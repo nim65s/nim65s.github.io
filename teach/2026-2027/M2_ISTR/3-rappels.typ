@@ -65,22 +65,6 @@
 
 #section-slide("Contrôle du flot")
 
-#laas-slide(title: "Functions, C++")[
-  ```cpp
-  auto add(int first, int second) -> int {
-    return first + second;
-  }
-  ```
-]
-
-#laas-slide(title: "Functions, Python")[
-  ```python
-  def add(first: int, second: int) -> int:
-      return first + second
-  ```
-]
-
-
 #laas-slide(title: "Conditions: C++")[
   ```cpp
   if (temperature > 26) {
@@ -220,6 +204,21 @@
   colors = ["orange", "blue", "pink"]
   for color in colors:
       print(color)
+  ```
+]
+
+#laas-slide(title: "Fonctions, C++")[
+  ```cpp
+  auto add(int first, int second) -> int {
+    return first + second;
+  }
+  ```
+]
+
+#laas-slide(title: "Fonctions, Python")[
+  ```python
+  def add(first: int, second: int) -> int:
+      return first + second
   ```
 ]
 
