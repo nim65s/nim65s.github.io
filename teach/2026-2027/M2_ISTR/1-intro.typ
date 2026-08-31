@@ -7,7 +7,7 @@
   doc,
   presentation_title: "Introduction",
   presentation_subtitle: "Université Toulouse Paul Sabatier - KEAT9AA1",
-  date: "2025-08-31",
+  date: "2026-08-31",
 )
 
 #about-me

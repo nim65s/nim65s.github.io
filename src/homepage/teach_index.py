@@ -9,6 +9,8 @@ from urllib.parse import urlparse
 
 from jinja2 import Environment
 
+NOW = "2026-2027"
+
 
 def url_format(value):
     return urlparse(value).hostname
@@ -17,7 +19,7 @@ def url_format(value):
 def get_teach():
     teach = []
 
-    for dir_path, _, files in Path("teach").walk():
+    for dir_path, _, files in Path(f"teach/{NOW}").walk():
         for file_name in files:
             if not file_name.endswith(".typ"):
                 continue
