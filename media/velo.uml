@@ -1,0 +1,118 @@
+@startuml
+
+class Produit << (M,green) >> {
+  *nom
+  *prix_de_vente
+  *duree_de_vie
+  *nombre_par_palette
+  *operations
+}
+
+class Operation << (M,green) >> {
+  *nom
+  *operation_suivante
+  *cout
+  *machine
+  *quantite_produits
+  *heures_de_travail
+  *consommation_electrique
+}
+
+class QuantiteProduit << (M,green) >> {
+  *produit
+  *nombre
+}
+
+class Stock << (M,green) >> {
+  *quantite_produits
+  *palettes_max
+}
+
+class Lieu << (M,green) >> {
+  *nom
+  *ville
+  *superficie
+  *quantite_machines
+  *consommation_electrique
+}
+
+class Ville << (M,green) >> {
+  *nom
+  *taxe_immobiliere
+  *prix_m2
+  *pays
+}
+
+class Pays << (M,green) >> {
+  *nom
+  *tva
+  *tarif_electrique
+  *salaire_minimum
+}
+
+class Fournisseur << (M,green) >> {
+  *nom
+  *prix_produits
+}
+
+class PrixProduit << (M,green) >> {
+  *produit
+  *prix_achat
+}
+
+class Transport << (M,green) >> {
+  *nombre_palettes
+  *cout
+  *delai
+  *depart
+  *arrivee
+}
+
+class PointDeVente << (M,green) >> {
+  *nom
+  *lieu
+  *heures_de_travail
+  *stock
+}
+
+class Facture << (M,green) >> {
+  *quantite_produits
+  *reduction
+  *point_de_vente
+  *client
+}
+
+class Machine << (M,green) >> {
+  *nom
+  *prix
+  *duree_de_vie
+  *cout_maintenance
+  *superficie
+}
+
+class QuantiteMachine << (M,green) >> {
+  *machine
+  *nombre
+}
+
+
+Operation -* Produit::operations
+Operation -* Operation::operation_suivante
+Machine -* Operation::machine
+QuantiteProduit -o Operation::quantite_produits
+Produit -* QuantiteProduit::produit
+QuantiteProduit -o Stock::quantite_produits
+Ville -* Lieu::ville
+QuantiteMachine -o Lieu::quantite_machines
+Pays -* Ville::pays
+PrixProduit -o Fournisseur::prix_produits
+Produit -* PrixProduit::produit
+Lieu -* Transport::depart
+Lieu -* Transport::arrivee
+Lieu -* PointDeVente::lieu
+Stock -* PointDeVente::stock
+QuantiteProduit -o Facture::quantite_produits
+PointDeVente -* Facture::point_de_vente
+Machine -* QuantiteMachine::machine
+
+@enduml
