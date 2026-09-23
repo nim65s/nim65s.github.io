@@ -46,8 +46,11 @@
   $ uv add django
   $ git add .
   $ git commit -m "uv add django"
-  $ source .venv/bin/activate
+  $ source .venv/bin/activate # linux/mac
+  $ .venv\Scripts\Activate.ps1 # windows
   ```
+
+  #link("https://docs.python.org/3.16/library/venv.html#how-venvs-work")
 ]
 
 #laas-slide(title: "Création d’un projet", alignment: top + left)[
@@ -60,9 +63,9 @@
   $ git add .
   $ git commit -m "uv add django"
   $ source .venv/bin/activate
-  $ django-admin startproject boissons
+  $ django-admin startproject velos
   $ git add .
-  $ git commit -m "django-admin startproject boissons"
+  $ git commit -m "django-admin startproject velos"
   ```
 ]
 
@@ -100,11 +103,11 @@
   ```bash
   $ wget https://gitlab.laas.fr/gsaurel/homepage\
          /-/raw/main/.pre-commit-config.yaml
-  $ uv add --dev pre-commit
+  $ uv add --dev prek
   $ git add .
   $ git commit -m "setup tooling"
-  $ pre-commit install
-  $ pre-commit run -a
+  $ prek install
+  $ prek run -a
   ```
 ]
 
@@ -112,16 +115,16 @@
   ```bash
   $ wget https://gitlab.laas.fr/gsaurel/homepage\
          /-/raw/main/.pre-commit-config.yaml
-  $ uv add --dev pre-commit
+  $ uv add --dev prek
   $ git add .
   $ git commit -m "setup tooling"
-  $ pre-commit install
-  $ pre-commit run -a
+  $ prek install
+  $ prek run -a
   ```
   ```bash
-  $ pre-commit run -a
+  $ prek run -a
   $ git add .
-  $ git commit -m "pre-commit run -a"
+  $ git commit -m "prek run -a"
   $ git push
   ```
 ]
@@ -137,9 +140,9 @@
 
 #laas-slide(title: "Création d’une application")[
   ```bash
-  $ cd boissons
+  $ cd velos
   $ ./manage.py startapp high_level
-  # éditez boissons/settings.py:
+  # éditez velos/settings.py:
   # ajoutez `high_level` dans `INSTALLED_APPS`
   $ git add .
   $ git commit -m "start app high_level"
@@ -148,7 +151,7 @@
 ]
 
 #laas-slide(title: "Modèles")[
-  #image("../../../media/boissons.svg")
+  #image("../../../media/velo.svg")
   #link("https://gitlab.laas.fr/gsaurel/homepage/-/raw/main/media/velo.svg")
 ]
 
