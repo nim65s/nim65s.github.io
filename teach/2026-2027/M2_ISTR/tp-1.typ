@@ -15,6 +15,7 @@
 #laas-slide(title: "Pre-requis", alignment: top + left)[
   - Git: `git --version`
   - uv: `uv --version`
+  #link("https://docs.astral.sh/uv/getting-started/installation/")
 ]
 
 #laas-slide(title: "Pre-requis", alignment: top + left)[
