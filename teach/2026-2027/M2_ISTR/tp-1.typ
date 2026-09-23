@@ -186,6 +186,14 @@
   ```
 ]
 
+#laas-slide(title: "Ruff: exclude migrations")[
+  Éditez `pyproject.toml`:
+  ```toml
+  [tool.ruff]
+  extend-exclude = ["migrations"]
+  ```
+]
+
 #laas-slide(title: "Création de l’interface d’administration")[
   Éditez `high_level/admin.py`
 
