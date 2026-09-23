@@ -141,7 +141,7 @@
 #laas-slide(title: "Création d’une application")[
   ```bash
   $ cd velos
-  $ ./manage.py startapp high_level
+  $ python manage.py startapp high_level
   # éditez velos/settings.py:
   # ajoutez `high_level` dans `INSTALLED_APPS`
   $ git add .
@@ -190,13 +190,13 @@
   Éditez `high_level/admin.py`
 
   ```bash
-  $ ./manage.py makemigrations
-  $ ./manage.py migrate
-  $ ./manage.py createsuperuser
+  $ python manage.py makemigrations
+  $ python manage.py migrate
+  $ python manage.py createsuperuser
   $ git add .
   $ git commit -m "add high_level models & admin"
   $ git push
-  $ ./manage.py runserver
+  $ python manage.py runserver
   ```
 ]
 
