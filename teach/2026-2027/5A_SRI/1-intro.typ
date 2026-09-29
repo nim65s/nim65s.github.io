@@ -6,7 +6,7 @@
 #show: doc => my-slides(
   doc,
   presentation_title: "Introduction",
-  presentation_subtitle: "UPSSITECH - KUPR9AC3",
+  presentation_subtitle: "UPSSITECH - KUSR9AC3",
   date: "2026-09-25",
 )
 
