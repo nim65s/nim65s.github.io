@@ -172,20 +172,6 @@
   ```
 ]
 
-#laas-slide(title: "Création des modèles: class Abstraite")[
-  ```python
-  class QuantiteProduit(models.Model):
-      quantite = models.IntegerField()
-      matiere_premiere = models.ForeignKey(
-          Produit,
-          on_delete=models.PROTECT,
-      )
-
-      class Meta:
-          abstract = True
-  ```
-]
-
 #laas-slide(title: "Ruff: exclude migrations")[
   Éditez `pyproject.toml`:
   ```toml
