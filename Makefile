@@ -50,7 +50,7 @@ install: all
 	done;
 
 rsync: all
-	rsync -avzP public/ homepages.laas.fr:
+	rsync -avzP public/ homepages.l:
 
 watch: $(TALK) my-slides.typ
 	typst watch --root . $(TALK) public/$(TALK:.typ=.pdf)

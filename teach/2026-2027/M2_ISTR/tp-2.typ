@@ -6,7 +6,7 @@
   doc,
   presentation_title: "TP 2",
   presentation_subtitle: "Université Toulouse Paul Sabatier - KEAT9AA1",
-  date: "2025-09-29",
+  date: "2026-09-29",
 )
 
 #laas-slide(title: "On vérifie que tout est dans git")[

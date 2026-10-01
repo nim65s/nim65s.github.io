@@ -6,7 +6,7 @@
   doc,
   presentation_title: "TP 3",
   presentation_subtitle: "Université Toulouse Paul Sabatier - KEAT9AA1",
-  date: "2025-10-01",
+  date: "2026-10-01",
 )
 
 #laas-slide(title: "JSON")[

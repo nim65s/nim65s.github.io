@@ -57,5 +57,5 @@ def main():
     Path("public/teach.html").write_text(template.render(ctx))
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+# main()
