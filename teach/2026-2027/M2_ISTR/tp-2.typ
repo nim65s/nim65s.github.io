@@ -88,3 +88,13 @@
     On s’attend à ce que `Local.objects.first().costs()` vaille 111 000 €
   ]
 ]
+
+#laas-slide(title: "Add Many2Many")[
+  ```python
+  m1 = Machine.objects.create(...)
+  qm1 = QuantiteMachine.objects.create(machine=m1, ...)
+  l1 = Lieu.objects.create(...)
+  l1.quantite_machines.add(qm1)
+  l1.save()
+  ```
+]

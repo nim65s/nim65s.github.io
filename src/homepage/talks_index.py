@@ -36,7 +36,7 @@ def get_talks():
         y = date.year
         m = date.month
         d = date.day
-        talks.append([y, m, d, "talks", f.stem, meta])
+        talks.append(["", y, m, d, "talks", f.stem, meta])
 
     return sorted(talks, reverse=True)
 

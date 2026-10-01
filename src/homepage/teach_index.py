@@ -38,7 +38,7 @@ def get_teach():
             y = date.year
             m = date.month
             d = date.day
-            teach.append([y, m, d, str(dir_path), f.stem, meta])
+            teach.append([meta["subtitle"], y, m, d, str(dir_path), f.stem, meta])
 
     return sorted(teach, reverse=True)
 
@@ -57,5 +57,5 @@ def main():
     Path("public/teach.html").write_text(template.render(ctx))
 
 
-# if __name__ == "__main__":
-# main()
+if __name__ == "__main__":
+    main()
