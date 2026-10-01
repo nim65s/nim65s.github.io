@@ -85,7 +85,7 @@
     - #text(16pt)[1 palette de câbles à 3 000 €]
 
   #text(18pt)[
-    On s’attend à ce que `Local.objects.first().costs()` vaille 111 000 €
+    On s’attend à ce que `Lieu.objects.first().costs()` vaille 111 000 €
   ]
 ]
 
