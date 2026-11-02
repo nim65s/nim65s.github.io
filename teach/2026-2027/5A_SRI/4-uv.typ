@@ -4,7 +4,7 @@
 
 #show: doc => my-slides(
   doc,
-  presentation_title: "",
+  presentation_title: "ruff & uv",
   presentation_subtitle: "UPSSITECH - KUSR9AC3",
   date: "2026-11-03",
 )
