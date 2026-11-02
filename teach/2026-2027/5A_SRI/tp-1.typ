@@ -46,7 +46,9 @@
   $ cat ~/.ssh/id_ed25519.pub
   ```
 
-  #link("https://github.com/settings/ssh/new")
+  #link(
+    "https://github.com/settings/ssh/new",
+  )[https://github.com/settings/ssh/new]
 
   Test:
   ```
