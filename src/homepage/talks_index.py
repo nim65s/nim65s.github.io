@@ -26,7 +26,7 @@ def get_talks():
     for f in Path("talks").glob("*.typ"):
         meta = {"urls": []}
         for entry in loads(
-            check_output(["typst", "query", "--root", ".", f, "metadata"])
+            check_output(["typst", "eval", "query(metadata)", "--root", ".", "--in", f])
         ):
             label = entry["label"].strip("<>")
             if label == "urls":
