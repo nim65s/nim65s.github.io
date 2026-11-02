@@ -19,7 +19,9 @@ def get_talks():
 
     old = Path("public/.old-talks.json")
     if old.exists():
-        talks = [[y, m, d, "talks", s, f] for (y, m, d, s, f) in loads(old.read_text())]
+        talks = [
+            ["", y, m, d, "talks", s, f] for (y, m, d, s, f) in loads(old.read_text())
+        ]
 
     for f in Path("talks").glob("*.typ"):
         meta = {"urls": []}
