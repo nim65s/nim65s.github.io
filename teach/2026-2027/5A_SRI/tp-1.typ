@@ -5,8 +5,8 @@
 #show: doc => my-slides(
   doc,
   presentation_title: "TP 1",
-  presentation_subtitle: "UPSSITECH - KUPR9BC3",
-  date: "2025-11-03",
+  presentation_subtitle: "UPSSITECH - KUSR9AC3",
+  date: "2026-11-02",
 )
 
 #laas-slide(title: "Pre-requis")[
