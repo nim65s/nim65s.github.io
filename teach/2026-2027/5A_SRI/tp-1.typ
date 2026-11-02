@@ -17,7 +17,7 @@
 
 
   - une VM avec déjà tout ça si besoin:
-  #link("homepages.laas.fr/gsaurel/vm.ova")
+  #link("https://homepages.laas.fr/gsaurel/vm.ova")
 
 ]
 
